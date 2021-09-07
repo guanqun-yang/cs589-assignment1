@@ -86,20 +86,5 @@ def compute_final_metric(lang, algo, component, metric="mrr"):
 
 
 
-langs = ["python", "java", "javascript"]
-metrics = ["mrr", "ndcg@5", "ndcg@10"]
-algos = ["bm25", "tfidf"]
-components = ["title", "question", "answer"]
-
-
-for component in components:
-    print(component)
-    score_dict = {(lang, metric): dict() for lang, metric in itertools.product(langs, metrics)}     
-    
-    for lang, metric, algo in itertools.product(langs, metrics, algos):
-        score_dict[(lang, metric)][algo] = compute_final_metric(lang, algo, component, metric)
-    
-    score_df = pd.DataFrame(score_dict)
-    print(score_df)
 
     
